@@ -17,7 +17,7 @@ void bintodec(int nr_binar[40]){
         if(nr_binar[o]==2)
             break;
     }
-    std::cout<<std::endl<<nr<<std::endl;
+    std::cout<<nr;
 }
 
 void dectobin(int a){
