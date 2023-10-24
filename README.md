@@ -1,10 +1,13 @@
 # Prompt-Calculus
 Developer-Oriented-Terminal-Calculator
 
+
 Note: Always include the equal sign at the end of the expression. Don't use spaces between the operators and numbers!
 
 
-It contains simple operations like: +, -, * or x, /
+It contains:
+
+Simple operations like: +, -, * or x, /
 
 Decimal to Binary and vice-versa conversion.
 
