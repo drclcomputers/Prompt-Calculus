@@ -1,5 +1,5 @@
 # Prompt-Calculus
-Developer-Oriented-Terminal-Calculator
+CMD or Linux Terminal advanced calculator
 
 
 Note: Always include the equal sign at the end of the expression. Don't use spaces between the operators and numbers!
@@ -7,15 +7,11 @@ Note: Always include the equal sign at the end of the expression. Don't use spac
 
 It contains:
 
-Simple operations like: +, -, * or x, /
-
-Decimal to Binary and vice-versa conversion.
-
-Square Root of a number.
-
-Powers.
-
-Factorial number.
+1. Simple operations like: +, -, * or x, /
+2. Decimal to Binary and vice-versa conversion.
+3. Square Root of a number.
+4. Powers.
+5. Factorial number.
 
 
 Type "ver" for version info, "help" for more help or "faq" for questions and answers.
@@ -28,7 +24,7 @@ Installation:
 
 On Windows, download and run 'prompt_calculus.exe'.
 
-On Linux, Mac, etc. download the source code and compile it using gcc or any other compiler. 
+On Linux, Mac, etc. download the source code and compile it using gcc or any other compiler (be sure to include the argument "-static"). 
 
 
 Example:
@@ -39,4 +35,4 @@ Example:
 5. 5!= (factorial) 
 6. 15== (dec to bin)
 7. =101= (bin to dec)
-etc.
+8. etc.
