@@ -14,9 +14,14 @@ Powers.
 
 Factorial number.
 
-Type "ver" for version info, "help" for more help or faq for questions and answers.
 
-Open-source code if you would like to modify it. :)
+Type "ver" for version info, "help" for more help or "faq" for questions and answers.
+
+
+This code is open-source for free use.
+
+
+Installation:
 
 On Windows, download and run 'prompt_calculus.exe'.
 
@@ -31,4 +36,4 @@ Example:
 5. 5!= (factorial) 
 6. 15== (dec to bin)
 7. =101= (bin to dec)
-etc. 
+etc.
