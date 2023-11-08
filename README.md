@@ -27,10 +27,10 @@ On Windows, download and run 'prompt_calculus.exe'.
 On Linux, Mac, etc. download the source code and compile it using gcc or any other compiler (be sure to include the argument "-static"). 
 
 
-Example:
-1. -2/5= (division) 
-2. -3^-2= (powers) 
-3. 7+-6= (addition) 
+Examples:
+1. -2.45/5.12= (division) 
+2. -3.4^-2= (powers) 
+3. 7+-6.6= (addition) 
 4. 2\= (square root) 
 5. 5!= (factorial) 
 6. 15== (dec to bin)
