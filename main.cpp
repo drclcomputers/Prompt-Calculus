@@ -1,6 +1,27 @@
 #include<iostream>
 #include<math.h>
 
+int factorial(int a){
+    int P=1;
+    for(int i=1; i<=a; i++)
+        P=P*i;
+    return P;
+}
+
+float power(float a, int b){
+    float P=1;
+    if(b>0)
+        for(int i=1; i<=b; i++)
+            P=P*a;
+    if(b==0)
+        P=1;
+    if(b<0){
+        for(int i=-1; i>=b; i--)
+            P=P*a;
+        P=1.0/P;}
+    return P;
+}
+
 void bintodec(int nr_binar[40]){
     int nr=0, aux_test=0;
     for(int w=0; w<40; w++){
@@ -13,7 +34,7 @@ void bintodec(int nr_binar[40]){
     //std::cout<<std::endl<<"aux: "<<aux_test;
     for(int o=0; o<=aux_test; o++){
         if(nr_binar[o]==1)
-            nr=nr+(pow(2, aux_test-o-1));
+            nr=nr+(power(2, aux_test-o-1));
         if(nr_binar[o]==2)
             break;
     }
@@ -32,41 +53,20 @@ void dectobin(int a){
         std::cout<<binary[j];
 }
 
-int factorial(int a){
-    int P=1;
-    for(int i=1; i<=a; i++)
-        P=P*i;
-    return P;
-}
-
-void power(int a, int b){
-    float P=1;
-    if(b>0)
-        for(int i=1; i<=b; i++)
-            P=P*a;
-    if(b==0)
-        P=1;
-    if(b<0){
-        for(int i=-1; i>=b; i--)
-            P=P*a;
-        P=1.0/P;}
-    std::cout<<P;
-}
-
-void add(int a, int b){
+void add(float a, float b){
     std::cout<<a+b;
 }
 
-void scad(int a, int b){
+void scad(float a, float b){
     std::cout<<a-b;
 }
 
-void mult(int a, int b){
+void mult(float a, float b){
     std::cout<<a*b;
 }
 
-void imp(int a, int b){
-    std::cout<<a*1.0/b;
+void imp(float a, float b){
+    std::cout<<a/b;
 }
 
 void welcome(){
@@ -75,18 +75,18 @@ void welcome(){
 
 void things(char expresie[44]){
     if(int(expresie[0])==118 || int(expresie[0])==86)
-        std::cout<<"Currently under active-development"<<std::endl<<"Beta-Release Prompt Calculus 0.7.2";
+        std::cout<<"Currently under active-development"<<std::endl<<"Beta-Release Prompt Calculus 0.7.5";
     if(int(expresie[0])==104 || int(expresie[0])==72)
         std::cout<<"Write the expression without spaces. Always add the equal sign!"<<std::endl<<"! - factorial"<<std::endl<<"\\ - square root"<<std::endl<<"^ - power"<<std::endl<<"+ , - , x or * , / - basic math operators"<<std::endl<<"'nr'== - decimal to binary conversion"<<std::endl<<"='nr'= - binary to decimal conversion"<<std::endl<<"Write 'X' to exit."<<std::endl;
     if(int(expresie[0])==102 || int(expresie[0])==70){
-        std::cout<<"FAQ"<<std::endl<<"Q: What happens if I don't add spaces? -> A: Not adding '=' on simple operation won't affect the results, but if you would use advanced functions, most likely the program will freeze or spit out random answers. So yeah, I suggest adding the equal sign."<<std::endl;
+        std::cout<<"FAQ"<<std::endl<<"Q: What happens if I don't add spaces? -> A: Not adding '=' will most likely make the program spit out random answers. So yeah, I insist on adding the equal sign."<<std::endl;
         std::cout<<"Q: It's free? -> A: Yes, it's absotulely free and open-source. You can modify the source code if you would need other functions."<<std::endl;
-        std::cout<<"Q: Why'd you create this app? There are several other aplications, better than this one. -> A: I know, but it's mine and I'm proud of it. Plus, I hate the Windows built-in calculator (too complicated for me; I like using the CMD or terminal)"<<std::endl;}
+        std::cout<<"Q: Why'd you create this app? There are several other aplications, better than this one. -> A: I know, but it's mine and I'm proud of it. Plus, I hate the Windows built-in calculator (too complicated for me; I like using the CMD or terminal as a developer)"<<std::endl;}
 }
 
 void reading(char expresie[44]){
-    int a=0, b=0, semn=0;
-    bool trecut_semn=0, a_semn=0, b_semn=0;
+    int a=0, b=0, semn=0, a_float_aux=0, b_float_aux=0;
+    bool trecut_semn=0, a_semn=0, b_semn=0, a_float=0, b_float=0;
     for(int i=0; i<42; i++){
         int aux=expresie[i];
         //std::cout<<aux<<" ";
@@ -94,6 +94,27 @@ void reading(char expresie[44]){
             a_semn=1;
         if(aux==45 && b==0 && trecut_semn==1)
             b_semn=1;
+        if(trecut_semn==0 && aux==46)
+            a_float=1;
+        if(trecut_semn==1 && aux==46)
+            b_float=1;
+        if(a_float==1 && aux==46 && trecut_semn!=1){
+            for(int q=i+1; q<20; q++){
+                if(int(expresie[q])>=42 && int(expresie[q])<=47 && int(expresie[q])!=44 && int(expresie[q])!=46 || int(expresie[q])==94)
+                    break;
+                else
+                    a_float_aux++;
+            }
+        }
+        if(b_float==1 && trecut_semn==1 && aux==46){
+            for(int q=i+1; q<21; q++){
+                if(int(expresie[q])==61)
+                    break;
+                else
+                    b_float_aux++;
+                //std::cout<<"HEllo! Se aduna b float aux"<<std::endl;
+            }
+        }
         if(aux>=48 && aux<=57){
             if(trecut_semn==0)
                 a=a*10+aux-48;
@@ -144,17 +165,61 @@ void reading(char expresie[44]){
         a=a*-1;
     if(b_semn==1)
         b=b*-1;
-    //std::cout<<a<<" "<<semn<<" "<<b<<std::endl;
-    if(semn==43)
-        add(a, b);
-    if(semn==45)
-        scad(a, b);
-    if(semn==120 || semn==42)
-        mult(a, b);
-    if(semn==47)
-        imp(a, b);
-    if(semn==94)
-        power(a, b);
+    //std::cout<<"A inceput a="<<a<<"   b="<<b<<"   a float="<<a_float<<"   a float aux="<<a_float_aux<<"   b float="<<b_float<<"   b float aux="<<b_float_aux<<std::endl;
+    float m, n;
+    if(a_float==1)
+        m=a/int(power(10, a_float_aux))+a%int(power(10, a_float_aux))*power(10, -a_float_aux);
+    if(b_float==1)
+        n=b/int(power(10, b_float_aux))+b%int(power(10, b_float_aux))*power(10, -b_float_aux);
+    //std::cout<<std::endl<<a<<" "<<semn<<" "<<b<<std::endl;
+    if(semn==43){
+        if(a_float==1 && b_float==0)
+            add(m, b);
+        if(a_float==0 && b_float==1)
+            add(a, n);
+        if(a_float==0 && b_float==0)
+            add(a, b);
+        if(a_float==1 && b_float==1)
+            add(m, n);    
+        }
+    if(semn==45){
+        if(a_float==1 && b_float==0)
+            scad(m, b);
+        if(a_float==0 && b_float==1)
+            scad(a, n);
+        if(a_float==0 && b_float==0)
+            scad(a, b);
+        if(a_float==1 && b_float==1)
+            scad(m, n);   
+    }  
+    if(semn==120 || semn==42){
+        if(a_float==1 && b_float==0)
+            mult(m, b);
+        if(a_float==0 && b_float==1)
+            mult(a, n);
+        if(a_float==0 && b_float==0)
+            mult(a, b);
+        if(a_float==1 && b_float==1)
+            mult(m, n);   
+    }
+    if(semn==47){
+        if(a_float==1 && b_float==0)
+            imp(m, b);
+        if(a_float==0 && b_float==1)
+            imp(a, n);
+        if(a_float==0 && b_float==0)
+            imp(a, b);
+        if(a_float==1 && b_float==1)
+            imp(m, n);   
+    }
+    if(semn==94){
+        float P=0;
+        if(a_float==1)
+            P=power(m, int(b));
+        else
+            P=power(a, int(b));  
+        std::cout<<P<<" ";}
+
 
     std::cout<<std::endl<<std::endl;
 }
