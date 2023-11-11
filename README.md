@@ -12,6 +12,9 @@ It contains:
 3. Square Root of a number.
 4. Powers.
 5. Factorial number.
+6. Trigonometry.
+7. Logarithms.
+8. Percents.
 
 
 Type "ver" for version info, "help" for more help or "faq" for questions and answers.
@@ -35,4 +38,8 @@ Examples:
 5. 5!= (factorial) 
 6. 15== (dec to bin)
 7. =101= (bin to dec)
-8. etc.
+8. sid78= (sin of 78 degrees)
+9. sir78= (sin of 78 radians)
+10. log5.5= (logarithm in base 10 for 5.5)
+11. 45%= (percent of a given number)
+12. etc.
