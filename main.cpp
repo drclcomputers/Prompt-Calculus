@@ -62,7 +62,7 @@ void dectobin(int a){
 //Trigonometry =========================================
 
 void sindeg(float a){
-    std::cout<<sin(a*pi/180);
+    std::cout<<sin(a*3.141/180);
 }
 
 void sinran(float a){
@@ -70,7 +70,7 @@ void sinran(float a){
 }
 
 void cosdeg(float a){
-    std::cout<<cos(a*pi/180);
+    std::cout<<cos(a*3.141/180);
 }
 
 void cosran(float a){
@@ -79,7 +79,7 @@ void cosran(float a){
 
 
 void tandeg(float a){
-    std::cout<<sin(a*pi/180)/cos(a*pi/180);
+    std::cout<<sin(a*3.141/180)/cos(a*3.141/180);
 }
 
 void tanran(float a){
@@ -87,7 +87,7 @@ void tanran(float a){
 }
 
 void ctgdeg(float a){
-    std::cout<<cos(a*pi/180)/sin(a*pi/180);
+    std::cout<<cos(a*3.141/180)/sin(a*3.141/180);
 }
 
 void ctgran(float a){
@@ -134,7 +134,7 @@ void welcome(){
 
 void things(char expresie[44]){
     if(int(expresie[0])==118 || int(expresie[0])==86)
-        std::cout<<"Currently under active-development"<<std::endl<<"Beta-Release Prompt Calculus 0.8.1";
+        std::cout<<"Currently under active-development"<<std::endl<<"Beta-Release Prompt Calculus 0.8.2";
     if(int(expresie[0])==104 || int(expresie[0])==72)
         std::cout<<"Write the expression without spaces. Always add the equal sign!"<<std::endl<<"! - factorial"<<std::endl<<"\\ - square root"<<std::endl<<"^ - power"<<std::endl<<"+ , - , x or * , / - basic math operators"<<std::endl<<"'nr'== - decimal to binary conversion"<<std::endl<<"='nr'= - binary to decimal conversion"<<std::endl<<"pi - instead of writing pi, you can simply type 'pi'"<<std::endl<<"% - percent of a number"<<std::endl<<"sid, cod, tgd, ctd - sine, cosine, tangente, cotangent using degrees"<<std::endl<<"sir, cor, tgr, ctr - sine, cosine, tangente, cotangent using radians"<<std::endl<<"log - logarith in base 10 of a given number"<<std::endl<<std::endl<<"Use only 2 numbers or just one for complex operations(sin, cos, log, etc.)!"<<std::endl<<"Write 'X' to exit."<<std::endl;
     if(int(expresie[0])==102 || int(expresie[0])==70){
