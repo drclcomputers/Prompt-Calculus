@@ -134,7 +134,7 @@ void welcome(){
 
 void things(char expresie[44]){
     if(int(expresie[0])==118 || int(expresie[0])==86)
-        std::cout<<"Currently under active-development"<<std::endl<<"Beta-Release Prompt Calculus 0.8.2";
+        std::cout<<"Currently under active-development"<<std::endl<<"Beta-Release Prompt Calculus 0.8.3";
     if(int(expresie[0])==104 || int(expresie[0])==72)
         std::cout<<"Write the expression without spaces. Always add the equal sign!"<<std::endl<<"! - factorial"<<std::endl<<"\\ - square root"<<std::endl<<"^ - power"<<std::endl<<"+ , - , x or * , / - basic math operators"<<std::endl<<"'nr'== - decimal to binary conversion"<<std::endl<<"='nr'= - binary to decimal conversion"<<std::endl<<"pi - instead of writing pi, you can simply type 'pi'"<<std::endl<<"% - percent of a number"<<std::endl<<"sid, cod, tgd, ctd - sine, cosine, tangente, cotangent using degrees"<<std::endl<<"sir, cor, tgr, ctr - sine, cosine, tangente, cotangent using radians"<<std::endl<<"log - logarith in base 10 of a given number"<<std::endl<<std::endl<<"Use only 2 numbers or just one for complex operations(sin, cos, log, etc.)!"<<std::endl<<"Write 'X' to exit."<<std::endl;
     if(int(expresie[0])==102 || int(expresie[0])==70){
@@ -263,129 +263,60 @@ void reading(char expresie[44]){
     //std::cout<<"A inceput a="<<a<<"   b="<<b<<"   a float="<<a_float<<"   a float aux="<<a_float_aux<<"   b float="<<b_float<<"   b float aux="<<b_float_aux<<std::endl;
 
     //Float Change
-    if(a_float==1 && m==0)
+    m=a;
+    n=b;
+    if(a_float==1)
         m=a/int(power(10, a_float_aux))+a%int(power(10, a_float_aux))*power(10, -a_float_aux);
-    if(b_float==1 && n==0)
+    if(b_float==1)
         n=b/int(power(10, b_float_aux))+b%int(power(10, b_float_aux))*power(10, -b_float_aux);
     //=============
 
     //std::cout<<std::endl<<a<<" "<<semn<<" "<<b<<std::endl;
 
     //Basic Operations ============
-    if(semn==43){
-        if(a_float==1 && b_float==0)
-            add(m, b);
-        if(a_float==0 && b_float==1)
-            add(a, n);
-        if(a_float==0 && b_float==0)
-            add(a, b);
-        if(a_float==1 && b_float==1)
-            add(m, n);    
-        }
-    if(semn==45){
-        if(a_float==1 && b_float==0)
-            scad(m, b);
-        if(a_float==0 && b_float==1)
-            scad(a, n);
-        if(a_float==0 && b_float==0)
-            scad(a, b);
-        if(a_float==1 && b_float==1)
-            scad(m, n);   
-    }  
-    if(semn==120 || semn==42){
-        if(a_float==1 && b_float==0)
-            mult(m, b);
-        if(a_float==0 && b_float==1)
-            mult(a, n);
-        if(a_float==0 && b_float==0)
-            mult(a, b);
-        if(a_float==1 && b_float==1)
-            mult(m, n);   
-    }
-    if(semn==47){
-        if(a_float==1 && b_float==0)
-            imp(m, b);
-        if(a_float==0 && b_float==1)
-            imp(a, n);
-        if(a_float==0 && b_float==0)
-            imp(a, b);
-        if(a_float==1 && b_float==1)
-            imp(m, n);   
-    }
+    if(semn==43) add(m, n);
+    if(semn==45) scad(m, n);
+    if(semn==120 || semn==42) mult(m, n);
+    if(semn==47) imp(m, n);
     //===============================
 
     //Others
-    if(semn==94){
-        float P=0;
-        if(a_float==1)
-            P=power(m, int(b));
-        else
-            P=power(a, int(b));  
-        std::cout<<P<<" ";}
+    if(semn==94)  
+        std::cout<<power(m, int(n))<<" ";
     //sin
     if(sin_func){
         if(int(expresie[2])==100)
-            if(a_float==0)
-                sindeg(a);
-            else
-                sindeg(m);
+            sindeg(m);
         if(int(expresie[2])==114)
-            if(a_float==0)
-                sinran(a);
-            else
-                sinran(m);
+            sinran(m);
     }
     //cos
     if(cos_func){
         if(int(expresie[2])==100)
-            if(a_float==0)
-                cosdeg(a);
-            else
-                cosdeg(m);
+            cosdeg(m);
         if(int(expresie[2])==114)
-            if(a_float==0)
-                cosran(a);
-            else
-                cosran(m);
+            cosran(m);
     }
     //tg
     if(tg_func){
         if(int(expresie[2])==100)
-            if(a_float==0)
-                tandeg(a);
-            else
-                tandeg(m);
+            tandeg(m);
         if(int(expresie[2])==114)
-            if(a_float==0)
-                tanran(a);
-            else
-                tanran(m);
+            tanran(m);
     }
     //ctg
     if(ctg_func){
         if(int(expresie[2])==100)
-            if(a_float==0)
-                ctgdeg(a);
-            else
-                ctgdeg(m);
+            ctgdeg(m);
         if(int(expresie[2])==114)
-            if(a_float==0)
-                ctgran(a);
-            else
-                ctgran(m);
+            ctgran(m);
     }
     //log
     if(log_func)
-        if(a_float==0)
-            logfunc(a);
-        else
-            logfunc(m);
+        logfunc(m);
     //mod
     if(mod_func)
-        if(a_float==0)
-            modfunc(a);
-        else
-            modfunc(m);
+        modfunc(m);
 
 
     std::cout<<std::endl<<std::endl;
